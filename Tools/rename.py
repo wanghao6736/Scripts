@@ -2,10 +2,10 @@
 @name: 文件重命名脚本
 @detail: 将脚本目录下的文件夹和文件按输入的正则表达式重命名
 @example: 
-    python rename.py "abc" "def" ".txt"
-    将脚本目录下所有文件夹/文件名中的字符 "abc" 替换为 "def"，同时删除 txt 文件
+    python rename.py "path-to-file" "abc" "def" ".txt"
+    将指定目录下所有文件夹/文件名中的字符 "abc" 替换为 "def"，同时删除 txt 文件
 @author: wanghao
-@date: 2022.09.03
+@date: 2022.12.01
 """
 import os
 import re
@@ -43,16 +43,16 @@ def remove_ext(src: str, ext='.txt') -> bool:
     return False
 
 # the root directory
-root = os.getcwd()
+root = sys.argv[1]
 
 # argv[1] : the regex expression
-reg = re.compile(sys.argv[1])
+reg = re.compile(sys.argv[2])
 
 # argv[2] : new string to replace strings that match regex expression
-sub = sys.argv[2]
+sub = sys.argv[3]
 
 # argv[3] : the extension name
-fext = sys.argv[3] if len(sys.argv) == 4 else '.txt'
+fext = sys.argv[4] if len(sys.argv) == 4 else '.txt'
 
 for rt, dirs, files in os.walk(root):
     for d in dirs:

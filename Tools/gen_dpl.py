@@ -4,18 +4,18 @@
 @param albums: 根目录下所有专辑所构成的列表
 @param file_type: 指定所选列表项目的文件类型
 @example:
-	python gen_dpl.py .dff .dst
-	为脚本目录下所有子目录下的 dff 和 dst 文件生成播放列表，保存至脚本目录下的 playlists 文件夹中
+	python gen_dpl.py "path-to-file" .dff .dst
+	为指定目录下所有子目录下的 dff 和 dst 文件生成播放列表，保存至指定目录下的 playlists 文件夹中
 @author: wanghao
-@date: 2022.03.21
+@date: 2022.12.01
 """
 import os
 import sys
 
 
-root = os.getcwd()
+root = sys.argv[1]
 albums = os.listdir(root)
-file_type = sys.argv[1:]
+file_type = sys.argv[2:]
 playlists = os.path.join(root, "playlists")
 
 if not os.path.exists(playlists):
