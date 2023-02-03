@@ -2,10 +2,12 @@
 @name: 文件重命名脚本
 @detail: 将脚本目录下的文件夹和文件按输入的正则表达式重命名
 @example: 
-    python rename.py "path-to-file" "abc" "def" ".txt"
+    python rename.py "file_path" "abc" "def" ".txt"
     将指定目录下所有文件夹/文件名中的字符 "abc" 替换为 "def"，同时删除 txt 文件
+    python rename.py "file_path" "wezz(\d).(\d).png" "wezz0\1.\2.png" ".txt"
+    分组匹配
 @author: wanghao
-@date: 2022.12.01
+@date: 2023.02.03
 """
 import os
 import re
